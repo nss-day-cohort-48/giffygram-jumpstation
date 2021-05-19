@@ -14,3 +14,4 @@ const applicationState = {
 export const getUsers = () => {
     return [...applicationState.currentUser]
 }
+
