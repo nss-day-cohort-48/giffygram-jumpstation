@@ -5,9 +5,11 @@ import { navbar } from "./nav/NavBar.js"
 
 export const GiffyGram = () => {
 
+
     // Show main main UI
     return `
     <h1>Giffygram</h1>
+    <button id="logOut">Logout</button>
     
     <div giffygram__navbar>
     ${navbar()}
@@ -25,7 +27,4 @@ export const GiffyGram = () => {
     ${footer()}
     </div>
     `
-
-
 }
-
