@@ -2,10 +2,8 @@ import { sendUsers, getUsers } from "../data/provider.js";
 import { LoginForm } from "./Login.js";
 const mainContainer = document.querySelector(".container");
 
-
-
 export const Register = () => {
-    let html = `
+  let html = `
     <div class="field">
     <label class="label" for="name">Name</label>
     <input type="text" name="name" class="input" />
@@ -20,40 +18,30 @@ export const Register = () => {
     </div>
     <button class="button" id="submitRequest">Submit Request</button>
     `;
-    
-    return html;
-};
 
+  return html;
+};
 
 document.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "submitRequest") {
     // Get what the user typed into the form fields
-    const userName = document.querySelector(
-      "input[name='name']"
-    ).value;
-    const userEmail = document.querySelector(
-      "input[name='email']"
-    ).value;
-    const userPassword = document.querySelector(
-      "input[name='password']"
-    ).value;
-    const userState = getUsers()
-    
+    const userName = document.querySelector("input[name='name']").value;
+    const userEmail = document.querySelector("input[name='email']").value;
+    const userPassword = document.querySelector("input[name='password']").value;
+    const userState = getUsers();
+
     const dataToSendToAPI = {
       name: userName,
       email: userEmail,
       password: userPassword,
     };
 
-
-    let matchedUser = userState.find(user => user.email === userEmail)
+    let matchedUser = userState.find((user) => user.email === userEmail);
     if (matchedUser) {
-        window.alert("This email is already taken")
+      window.alert("This email is already taken");
+    } else {
+      sendUsers(dataToSendToAPI);
     }
-        else {
-            sendUsers(dataToSendToAPI);
-            
-        }
 
     // for (const user of userState) {
     //     if (user.email === userEmail) {
@@ -65,6 +53,5 @@ document.addEventListener("click", (clickEvent) => {
     // Make an object out of the user input
 
     // Send the data to the API for permanent storage
-    
-}
+  }
 });

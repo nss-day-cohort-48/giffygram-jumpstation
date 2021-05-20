@@ -1,28 +1,5 @@
 {
   "users": [
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 1
-    },
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 2
-    },
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 3
-    },
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 4
-    }
+   
   ]
 }
