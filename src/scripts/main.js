@@ -11,9 +11,7 @@ const mainContainer = document.querySelector(".giffygram");
 export const renderApp = () => {
 
     const user = parseInt(localStorage.getItem("gg_user"))
-    
-=======
-  const user = parseInt(localStorage.getItem("gg_user"));
+
   fetchUsers().then(() => {
 
     if (user) {
@@ -29,7 +27,7 @@ export const renderApp = () => {
 renderApp();
 
 
-applicationElement.addEventListener(
+mainContainer.addEventListener(
     "stateChanged",
     CustomEvent => {
         renderApp()
@@ -38,7 +36,7 @@ applicationElement.addEventListener(
 
 renderApp()
 
-applicationElement.addEventListener(
+mainContainer.addEventListener(
     "click", clickEvent => {
         if (clickEvent.target.id === "create__button") {
             const createPost = document.querySelector(".create__post")
