@@ -47,6 +47,12 @@
       "email": "11",
       "password": "11",
       "id": 8
+    },
+    {
+      "name": "pickle rick",
+      "email": "pppp",
+      "password": "pppp",
+      "id": 9
     }
   ]
 }
