@@ -1,4 +1,5 @@
-import { sendUsers } from "../data/provider.js";
+import { sendUsers, getUsers } from "../data/provider.js";
+import { LoginForm } from "./Login.js";
 const mainContainer = document.querySelector(".container");
 
 
@@ -36,16 +37,34 @@ document.addEventListener("click", (clickEvent) => {
     const userPassword = document.querySelector(
       "input[name='password']"
     ).value;
-
-    // Make an object out of the user input
+    const userState = getUsers()
+    
     const dataToSendToAPI = {
       name: userName,
       email: userEmail,
       password: userPassword,
     };
 
+
+    let matchedUser = userState.find(user => user.email === userEmail)
+    if (matchedUser) {
+        window.alert("This email is already taken")
+    }
+        else {
+            sendUsers(dataToSendToAPI);
+            
+        }
+
+    // for (const user of userState) {
+    //     if (user.email === userEmail) {
+    //         window.alert ("This email already exist")
+    //         document.innerHtml = LoginForm()
+    //     }
+    // }
+
+    // Make an object out of the user input
+
     // Send the data to the API for permanent storage
-    sendUsers(dataToSendToAPI);
     
 }
 });

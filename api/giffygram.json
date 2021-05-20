@@ -1,58 +1,28 @@
 {
   "users": [
     {
-      "name": "ee",
-      "email": "ee",
-      "password": "ee",
+      "name": "justin",
+      "email": "justinadams758@gmail.com",
+      "password": "justin",
       "id": 1
     },
     {
-      "name": "22",
-      "email": "ee2",
-      "password": "222",
+      "name": "justin",
+      "email": "justinadams758@gmail.com",
+      "password": "justin",
       "id": 2
     },
     {
-      "name": "11",
-      "email": "11",
-      "password": "11",
+      "name": "justin",
+      "email": "justinadams758@gmail.com",
+      "password": "justin",
       "id": 3
     },
     {
-      "name": "22",
-      "email": "22",
-      "password": "2222222222",
+      "name": "justin",
+      "email": "justinadams758@gmail.com",
+      "password": "justin",
       "id": 4
-    },
-    {
-      "name": "88",
-      "email": "88",
-      "password": "88",
-      "id": 5
-    },
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 6
-    },
-    {
-      "name": "justin",
-      "email": "justinadams758@gmail.com",
-      "password": "justin",
-      "id": 7
-    },
-    {
-      "name": "11",
-      "email": "11",
-      "password": "11",
-      "id": 8
-    },
-    {
-      "name": "pickle rick",
-      "email": "pppp",
-      "password": "pppp",
-      "id": 9
     }
   ]
 }
