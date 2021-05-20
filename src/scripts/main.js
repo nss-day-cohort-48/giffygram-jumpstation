@@ -1,16 +1,25 @@
-import { GiffyGram } from "./GiffyGram.js"
-import {LoginForm} from "./auth/Login.js"
+import { GiffyGram } from "./GiffyGram.js";
+import { LoginForm } from "./auth/Login.js";
+import { fetchUsers } from "./data/provider.js";
 
-const applicationElement = document.querySelector(".giffygram")
+const mainContainer = document.querySelector(".giffygram");
 
 export const renderApp = () => {
-    const user = parseInt(localStorage.getItem("gg_user"))
-
+  const user = parseInt(localStorage.getItem("gg_user"));
+  fetchUsers().then(() => {
     if (user) {
-        applicationElement.innerHTML = GiffyGram()
+      console.log("user exist");
+      mainContainer.innerHTML = GiffyGram();
     } else {
-        applicationElement.innerHTML = LoginForm()
+      console.log("user doesnt exist");
+      mainContainer.innerHTML = LoginForm();
     }
-}
+  });
+};
 
-renderApp()
+renderApp();
+
+mainContainer.addEventListener("stateChanged", (event) => {
+  console.log("State of data has changed. Regenerating HTML...");
+  renderApp();
+});
