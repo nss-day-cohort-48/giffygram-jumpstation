@@ -5,13 +5,14 @@ document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "loginButton") {
         let foundUser = null
         const userState = getUsers()
-
+        // console.log(userState)
         const email = document.querySelector("input[name='email']").value
         const password = document.querySelector("input[name='password']").value
-
+        // console.log(email + password)
         for (const user of userState) {
             if (user.email === email && user.password === password) {
                 foundUser = user
+                // console.log(foundUser)
             }
         }
 
