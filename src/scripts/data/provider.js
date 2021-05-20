@@ -9,10 +9,14 @@ const applicationState = {
     displayMessages: false,
   },
   allUsers: [],
+  posts: [],
 };
 
 export const getUsers = () => {
   return [...applicationState.allUsers];
+};
+export const getPosts = () => {
+  return [...applicationState.posts];
 };
 
 export const fetchUsers = () => {
@@ -40,3 +44,29 @@ export const sendUsers = (userServiceRequest) => {
       mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+
+export const fetchPosts = () => {
+  return fetch(`${API}/posts`)
+      .then(response => response.json())
+      .then(data => {
+          applicationState.posts = data
+      })
+}
+
+
+export const sendPost = (post) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(post)
+  }
+
+
+  return fetch(`${API}/posts`, fetchOptions)
+      .then(response => response.json())
+      .then (() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+      })
+}

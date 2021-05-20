@@ -1,3 +1,9 @@
+import { getPosts } from "../data/provider.js"
+
 export const giffyFeed = () => {
-    return `<h1>Giffy Feed</h1>`
+    const posts = getPosts()
+    return `<h1>Giffy Feed</h1>
+    
+
+    `
 }

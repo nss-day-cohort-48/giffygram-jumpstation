@@ -1,3 +1,11 @@
 {
-  "users": []
+  "users": [],
+  "posts": [
+    {
+      "title": "Test post",
+      "URL": "https://steamcommunity.com/sharedfiles/filedetails/?id=1143181517",
+      "description": "Test",
+      "id": 1
+    }
+  ]
 }
