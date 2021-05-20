@@ -24,3 +24,19 @@ export const fetchUsers = () => {
     })
 }
 
+
+export const sendUsers = () => {
+    const fetchOptions = {
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userServiceRequest),
+    }
+    return fetch(`${API}/users`,  fetchOptions)
+    .then((response) => response.json())
+    .then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
