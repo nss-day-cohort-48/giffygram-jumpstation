@@ -7,9 +7,8 @@ const applicationElement = document.querySelector(".giffygram")
 
 export const renderApp = () => {
     const user = parseInt(localStorage.getItem("gg_user"))
-    let test = 2
-
-    if (test > 1) {
+    
+    if (user) {
         applicationElement.innerHTML = GiffyGram()
     } else {
         applicationElement.innerHTML = LoginForm()
