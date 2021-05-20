@@ -1,10 +1,3 @@
-
-// document.addEventListener(
-//     "change",
-//     (event) => {
-//         if (event.target.name === "users") {
-//             setUser(parseInt(event.target.value))
-//         }
-//     }
-// )
-
+export const footer = () => {
+    return `<h2>Footer</h2>`
+}
