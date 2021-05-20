@@ -1,30 +1,30 @@
 import { sendUsers } from "../data/provider.js";
+const mainContainer = document.querySelector(".container");
 
 
 
 export const Register = () => {
     let html = `
-          <div class="field">
-              <label class="label" for="name">Name</label>
-              <input type="text" name="name" class="input" />
-          </div>
-          <div class="field">
-              <label class="label" for="email">Email</label>
-              <input type="text" name="email" class="input" />
-          </div>
-          <div class="field">
-              <label class="label" for="password">Password</label>
-              <input type="number" name="password" class="input" />
-          </div>
-            <button class="button" id="submitRequest">Submit Request</button>
-      `;
-  
+    <div class="field">
+    <label class="label" for="name">Name</label>
+    <input type="text" name="name" class="input" />
+    </div>
+    <div class="field">
+    <label class="label" for="email">Email</label>
+    <input type="text" name="email" class="input" />
+    </div>
+    <div class="field">
+    <label class="label" for="password">Password</label>
+    <input type="text" name="password" class="input" />
+    </div>
+    <button class="button" id="submitRequest">Submit Request</button>
+    `;
+    
     return html;
-  };
+};
 
-  const mainContainer = document.querySelector(".container");
 
-mainContainer.addEventListener("click", (clickEvent) => {
+document.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "submitRequest") {
     // Get what the user typed into the form fields
     const userName = document.querySelector(
@@ -46,5 +46,6 @@ mainContainer.addEventListener("click", (clickEvent) => {
 
     // Send the data to the API for permanent storage
     sendUsers(dataToSendToAPI);
-  }
+    
+}
 });

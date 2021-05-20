@@ -1,6 +1,7 @@
 import { getUsers } from "../data/provider.js"
+import { Register } from "./Register.js"
 
-
+const mainContainer = document.querySelector(".giffygram")
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "loginButton") {
         let foundUser = null
@@ -20,8 +21,14 @@ document.addEventListener("click", clickEvent => {
             localStorage.setItem("gg_user", foundUser.id)
             document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
         }
+    } else if (clickEvent.target.id === "createAccount") {
+        mainContainer.innerHTML = Register()
+    } else if (clickEvent.target.id === "logOut") {
+        localStorage.clear("gg_user")
+        mainContainer.innerHTML = LoginForm()
     }
-})
+    }
+)
 
 export const LoginForm = () => {
     return `
@@ -37,6 +44,7 @@ export const LoginForm = () => {
                 </fieldset>
             </form>
             <button id="loginButton">Login</button>
+            <button id="createAccount">Create Account</button>
         </div>
     `
 }

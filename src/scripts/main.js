@@ -1,6 +1,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import { LoginForm } from "./auth/Login.js"
 import { fetchUsers } from "./data/provider.js"
+
 const mainContainer = document.querySelector(".giffygram")
 
 export const renderApp = () => {
@@ -12,8 +13,9 @@ export const renderApp = () => {
             mainContainer.innerHTML = GiffyGram()
         } else {
             console.log("user doesnt exist")
-            mainContainer.innerHTML = LoginForm()
-        }})
+            mainContainer.innerHTML = LoginForm() 
+        }
+    })
 }
 
 renderApp()

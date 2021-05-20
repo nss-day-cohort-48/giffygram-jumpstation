@@ -25,7 +25,7 @@ export const fetchUsers = () => {
 }
 
 
-export const sendUsers = () => {
+export const sendUsers = (userServiceRequest) => {
     const fetchOptions = {
         method: "POST",
 
@@ -36,7 +36,10 @@ export const sendUsers = () => {
     }
     return fetch(`${API}/users`,  fetchOptions)
     .then((response) => response.json())
-    .then(() => {
+    .then((response) => {
+        localStorage.setItem("gg_user", response.id)
+
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
     })
+    
 }
