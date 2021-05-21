@@ -9,7 +9,7 @@ const applicationState = {
     displayMessages: false,
   },
   allUsers: [],
-  posts: [],
+  allPosts: []
 };
 
 export const getUsers = () => {

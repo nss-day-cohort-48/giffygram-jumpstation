@@ -1,5 +1,4 @@
 import { sendUsers, getUsers } from "../data/provider.js";
-import { LoginForm } from "./Login.js";
 const mainContainer = document.querySelector(".container");
 
 export const Register = () => {

@@ -2,7 +2,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import {LoginForm} from "./auth/Login.js"
 import { CreatePost } from "./feed/CreatePost.js"
-import { fetchPosts, fetchUsers, sendPost } from "./data/provider.js";
+import { fetchPosts, fetchUsers, sendPost, getUsers } from "./data/provider.js";
 
 
 const mainContainer = document.querySelector(".giffygram");
@@ -59,10 +59,16 @@ mainContainer.addEventListener(
             const url = document.querySelector("input[name='url']").value
             const description = document.querySelector("input[name='description']").value
 
+            const currentUser = parseInt(localStorage.getItem("gg_user"))
+
+
+
             const newPost = {
                 title: title,
                 URL: url,
                 description: description,
+
+                userId: currentUser
                 timestamp: new Date().toLocaleDateString()
             }
             console.log(newPost)
