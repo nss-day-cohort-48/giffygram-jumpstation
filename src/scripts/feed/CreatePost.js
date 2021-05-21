@@ -16,6 +16,7 @@ export const CreatePost = () => {
         <input placeholder ="Story behind your gif..." type="text" name="description" class="newPost__input"/>
     </div>
 
+
     <button class="newPost__submit" id="submit__button">Save</button>
     <button class="newPost__cancel" id="cancel__button">Cancel</button>
     
