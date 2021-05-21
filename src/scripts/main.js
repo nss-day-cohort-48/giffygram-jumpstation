@@ -58,10 +58,12 @@ mainContainer.addEventListener(
             const title = document.querySelector("input[name='title']").value
             const url = document.querySelector("input[name='url']").value
             const description = document.querySelector("input[name='description']").value
+
             const newPost = {
                 title: title,
                 URL: url,
-                description: description
+                description: description,
+                timestamp: new Date().toLocaleDateString()
             }
             console.log(newPost)
             sendPost(newPost)
