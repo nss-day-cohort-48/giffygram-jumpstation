@@ -1,3 +1,19 @@
 {
-"users":[]
+  "users": [
+    {
+      "name": "Noah Husain",
+      "email": "noahhusain@gmail.com",
+      "password": "noah",
+      "id": 1
+    }
+  ],
+  "posts": [
+    {
+      "title": "REEEEEEEEEEEE",
+      "URL": "https://media1.tenor.com/images/8ff270a0ea2bb49dad2201afe6e4ca13/tenor.gif?itemid=13627544",
+      "description": "REEEEEEEEEE",
+      "timestamp": "2021-05-21",
+      "id": 1
+    }
+  ]
 }
