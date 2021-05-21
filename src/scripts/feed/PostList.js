@@ -4,10 +4,11 @@ export const giffyFeed = () => {
     const posts = getPosts()
     const users = getUsers()
     console.log(posts)
+    const postsReversed = posts.reverse()
 
     return `
     <h1>Giffy Feed</h1>
-    ${posts.map(post => 
+    ${postsReversed.map(post => 
         {
         let creator = users.find(user => user.id === post.userId)
         return `<section class='post'><h2 class="post__title">${post.title}</h2> 
