@@ -13,11 +13,12 @@ export const CreatePost = () => {
     </div>
 
     <div class="field">
-        <input placeholder ="Story behind your gif..." type="text" name="story" class="newPost__input"/>
+        <input placeholder ="Story behind your gif..." type="text" name="description" class="newPost__input"/>
     </div>
 
-    <button class="newPost__submit" id="create__button">Save</button>
-    <button class="newPost__cancel" id="create__button">Cancel</button>
+
+    <button class="newPost__submit" id="submit__button">Save</button>
+    <button class="newPost__cancel" id="cancel__button">Cancel</button>
     
     `
 }
