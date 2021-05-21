@@ -68,7 +68,7 @@ mainContainer.addEventListener(
                 URL: url,
                 description: description,
 
-                userId: currentUser
+                userId: currentUser,
                 timestamp: new Date().toLocaleDateString()
             }
             console.log(newPost)
