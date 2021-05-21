@@ -1,4 +1,4 @@
-import { getUsers } from "./provider.js"
+import { getUsers } from "../data/provider.js"
 
 const userList = getUsers()
 
@@ -38,8 +38,8 @@ const renderFullMessageForm =  () => {
     </article>`
 }
 
-const renderMessageForm = () => {
-    if(displayMessageForm === true) {
+export const renderMessageForm = () => {
+    if(displayMessageForm === false) {
         renderBlankMessageForm()
     } else {
         renderFullMessageForm()
