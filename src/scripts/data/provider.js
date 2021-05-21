@@ -18,12 +18,12 @@ export const getUsers = () => {
 };
 
 export const getFiltered = () => {
-  console.log(applicationState.filteredPosts)
+  // console.log(applicationState.filteredPosts)
   return [...applicationState.filteredPosts]
 }
 
 export const filterByUser = (clickedId) => {
-  console.log("clickedId = " + clickedId)
+  // console.log("clickedId = " + clickedId)
   return fetch(`${API}/posts?userId=${clickedId}`)
   .then(response => response.json())
   .then(data => {

@@ -2,7 +2,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import {LoginForm} from "./auth/Login.js"
 import { CreatePost } from "./feed/CreatePost.js"
-import { fetchPosts, fetchUsers, sendPost, getUsers } from "./data/provider.js";
+import { fetchPosts, fetchUsers, sendPost, filterByUser, getFiltered } from "./data/provider.js";
 
 
 const mainContainer = document.querySelector(".giffygram");
@@ -15,6 +15,9 @@ export const renderApp = () => {
   fetchUsers().then(
       () => {
         fetchPosts().then(() => {
+            getFiltered()
+        })
+        .then(() => {
 
     if (user) {
       console.log("user exist");
@@ -44,6 +47,7 @@ mainContainer.addEventListener(
         if (clickEvent.target.id === "create__button") {
             const createPost = document.querySelector(".create__post")
             createPost.innerHTML = `${CreatePost()}`
+            
         }
     }
 )
@@ -78,4 +82,18 @@ mainContainer.addEventListener(
             renderApp()
         }
     }
+)
+
+
+
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.id === "selectName") {
+            filterByUser(event.target.value)
+            console.log("user Id = " + event.target.value)
+            renderApp()
+        }
+}
+
 )
