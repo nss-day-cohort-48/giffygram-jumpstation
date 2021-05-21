@@ -1,5 +1,6 @@
 node_modules
 *.json
+giffygram.json
 .vscode
 dist
 .DS_Store

@@ -14,6 +14,7 @@ export const giffyFeed = () => {
         <img class="post__image" src='${post.URL}' 
         <div class='post__description'>${post.description}</div>
         <div class="post__tagline">Posted by ${creator.name}</div>
+        <div class="post__tagline">Posted by insert user Id logic here on ${post.timestamp}</div>
         <div class="post__actions"></div>
         </section>`
         })}
