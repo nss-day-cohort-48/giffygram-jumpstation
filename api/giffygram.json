@@ -25,13 +25,5 @@
       "id": 4
     }
   ],
-  "posts": [
-    {
-      "title": "ff",
-      "URL": "ff",
-      "description": "ff",
-      "userId": 1,
-      "id": 1
-    }
-  ]
+  "posts": []
 }
