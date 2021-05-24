@@ -10,7 +10,8 @@ const applicationState = {
   },
   allUsers: [],
   allPosts: [],
-  filteredPosts: []
+  filteredPosts: [],
+  userFavorites: []
 };
 
 export const getUsers = () => {
@@ -93,5 +94,32 @@ export const deletePost = (id) => {
     method: "DELETE",
   }).then(() => {
     mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  });
+};
+
+export const getFavoritePosts = () => {
+  return [...applicationState.userFavorites]
+}
+
+
+export const sendfavoritePosts = (newFavorited) => {
+  return fetch(`${API}/favoritedPosts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newFavorited)
+  
+  }).then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
+
+export const fetchFavoritePosts = () => {
+  const userId = localStorage.getItem("gg_user")
+  return fetch(`${API}/favorites?userId=${userId}`)
+  .then((response) => response.json())
+  .then((userData) => {
+    applicationState.userFavorites = userData;
   });
 };

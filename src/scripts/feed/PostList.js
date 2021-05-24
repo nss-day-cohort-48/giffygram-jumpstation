@@ -16,7 +16,7 @@ export const giffyFeed = () => {
         <div class="post__tagline">Posted by ${creator.name} on ${post.timestamp}</div>
         <div class="post__actions">
         <div>
-            <img id="${post.id}" class="actionIcon" name="favorite" src="/images/favorite-star-yellow.svg">
+            <img id="${post.id}" class="actionIcon" name="favorite" src="/images/blank.svg">
                 </div>
         <div>
         <img id="${post.id}" class="actionIcon" name="block" src="/images/block.svg">

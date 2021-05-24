@@ -2,7 +2,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import {LoginForm} from "./auth/Login.js"
 import { CreatePost } from "./feed/CreatePost.js"
-import { fetchPosts, fetchUsers, sendPost, filterByUser, getFiltered, deletePost } from "./data/provider.js";
+import { fetchPosts, fetchUsers, sendPost, filterByUser, getFiltered, deletePost, sendfavoritePosts } from "./data/provider.js";
 
 
 const mainContainer = document.querySelector(".giffygram");
@@ -100,6 +100,21 @@ mainContainer.addEventListener(
             let id = parseInt(clickEvent.target.id)
             console.log('Test')
             deletePost(id)
+        }
+    }
+)
+
+mainContainer.addEventListener(
+    "click", clickEvent => {
+        if (clickEvent.target.name === "favorite") {
+            let postId = parseInt(clickEvent.target.id)
+            let userId = parseInt(localStorage.getItem("gg_user"))
+            let newFavorited = {
+                userId: userId,
+                postId: postId 
+            }
+            console.log('Test')
+            sendfavoritePosts(newFavorited)
         }
     }
 )
