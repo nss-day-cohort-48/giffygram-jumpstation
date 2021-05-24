@@ -9,7 +9,8 @@ const applicationState = {
     displayMessages: false,
   },
   allUsers: [],
-  allPosts: []
+  allPosts: [],
+  allMessages: []
 };
 
 export const getUsers = () => {
@@ -69,4 +70,29 @@ export const sendPost = (post) => {
       .then (() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
       })
+}
+
+export const showMessageForm = () => {
+  applicationState.feed.displayMessages = true
+}
+
+export const fetchMessages = () => {
+  return fetch(`${API}/messages`)
+  .then((response) => response.json())
+  .then((message) => applicationState.allMessages = message)
+}
+
+export const postMessage = () => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(post)
+  }
+  return fetch(`${API}/messages`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  })
 }

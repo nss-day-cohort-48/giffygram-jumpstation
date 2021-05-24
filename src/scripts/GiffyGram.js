@@ -16,7 +16,9 @@ export const GiffyGram = () => {
     ${navbar()}
     </div>
     
+    <div class="message__form">
     ${renderMessageForm()}
+    </div>
     
     <div class ="create__post">
     ${newPostButton()}
