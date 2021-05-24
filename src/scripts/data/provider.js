@@ -117,7 +117,7 @@ export const sendfavoritePosts = (newFavorited) => {
 
 export const fetchFavoritePosts = () => {
   const userId = localStorage.getItem("gg_user")
-  return fetch(`${API}/favorites?userId=${userId}`)
+  return fetch(`${API}/favoritedPosts?userId=${userId}`)
   .then((response) => response.json())
   .then((userData) => {
     applicationState.userFavorites = userData;

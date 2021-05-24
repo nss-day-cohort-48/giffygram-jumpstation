@@ -1,10 +1,12 @@
-import { getPosts, getUsers } from "../data/provider.js"
+import { getFavoritePosts, getPosts, getUsers, fetchFavoritePosts } from "../data/provider.js"
 
 export const giffyFeed = () => {
     const posts = getPosts()
     const users = getUsers()
+    fetchFavoritePosts()
+    const favs = getFavoritePosts()
     const postsReversed = posts.reverse()
-
+    console.log(favs)
     return `
     <h1>Giffy Feed</h1>
     ${postsReversed.map(post => 
