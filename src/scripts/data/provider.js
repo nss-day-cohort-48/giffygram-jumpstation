@@ -10,7 +10,8 @@ const applicationState = {
   },
   allUsers: [],
   allPosts: [],
-  filteredPosts: []
+  filteredPosts: [],
+  allMessages: []
 };
 
 export const getUsers = () => {
@@ -85,6 +86,10 @@ export const sendPost = (post) => {
       .then (() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
       })
+}
+
+export const getMessages = () => {
+  return [...applicationState.allMessages]
 }
 
 export const fetchMessages = () => {

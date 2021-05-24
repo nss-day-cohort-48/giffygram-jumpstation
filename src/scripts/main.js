@@ -8,6 +8,7 @@ import {
   filterByUser,
   getFiltered,
   deletePost,
+  fetchMessages,
 } from "./data/provider.js";
 
 
@@ -15,6 +16,8 @@ const mainContainer = document.querySelector(".giffygram");
 
 export const renderApp = () => {
   const user = parseInt(localStorage.getItem("gg_user"));
+
+  fetchMessages()
 
   fetchUsers().then(() => {
     fetchPosts()
