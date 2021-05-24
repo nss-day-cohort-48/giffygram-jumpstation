@@ -84,21 +84,22 @@ mainContainer.addEventListener(
 )
 
 mainContainer.addEventListener(
-    "click", clickEvent => {
-        if (clickEvent.target.id === "deletePost") {
-            let id = parseInt(clickEvent.target.value)
-            deletePost(id)
-        }
-    }
-)
-
-mainContainer.addEventListener(
     "change",
     (event) => {
         if (event.target.id === "selectName") {
             filterByUser(event.target.value)
             console.log("user Id = " + event.target.value)
             renderApp()
+        }
+    }
+)
+
+mainContainer.addEventListener(
+    "click", clickEvent => {
+        if (clickEvent.target.name === "block") {
+            let id = parseInt(clickEvent.target.id)
+            console.log('Test')
+            deletePost(id)
         }
     }
 )
