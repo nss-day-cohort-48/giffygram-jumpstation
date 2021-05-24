@@ -107,3 +107,11 @@ export const postMessage = (message) => {
     mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
   })
 }
+
+export const deletePost = (id) => {
+  return fetch(`${API}/posts/${id}`, {
+    method: "DELETE",
+  }).then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  });
+};
