@@ -3,16 +3,13 @@ import { getFavoritePosts, getPosts, getUsers, fetchFavoritePosts } from "../dat
 export const giffyFeed = () => {
     const posts = getPosts()
     const users = getUsers()
-    fetchFavoritePosts()
-    const favs = getFavoritePosts()
     const postsReversed = posts.reverse()
-    console.log(favs)
     return `
     <h1>Giffy Feed</h1>
     ${postsReversed.map(post => 
-        {
-        let creator = users.find(user => user.id === post.userId)
-        return `<section name= "post" class='post' value='${post.id}'><h2 class="post__title">${post.title}</h2> 
+        {{
+        let creator = users.find(user => user.id === post.userId) 
+        return `<section name="post" class="post" value='${post.id}'><h2 class="post__title">${post.title}</h2> 
         <img class="post__image" src='${post.URL}'</img> 
         <div class='post__description'>${post.description}</div>
         <div class="post__tagline">Posted by ${creator.name} on ${post.timestamp}</div>
@@ -20,12 +17,22 @@ export const giffyFeed = () => {
         <div>
             <img id="${post.id}" class="actionIcon" name="favorite" src="/images/blank.svg">
                 </div>
+                
         <div>
         <img id="${post.id}" class="actionIcon" name="block" src="/images/block.svg">
             </div>
 
         </div>
         </section>`
-        }).join('')}
-    `
-}
+        }}).join('')}
+        `
+    }
+
+    // document.addEventListener("click", (clickEvent) => {
+    //     const currentFavorites = fetchFavoritePosts()
+    //     if(clickEvent.target.id.startsWith === "yellowFavorite"{
+
+    //     }
+
+    //     }
+    // })

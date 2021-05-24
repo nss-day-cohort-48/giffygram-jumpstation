@@ -2,7 +2,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import {LoginForm} from "./auth/Login.js"
 import { CreatePost } from "./feed/CreatePost.js"
-import { fetchPosts, fetchUsers, sendPost, filterByUser, getFiltered, deletePost, sendfavoritePosts } from "./data/provider.js";
+import { fetchPosts, fetchUsers, sendPost, filterByUser, getFiltered, deletePost, sendfavoritePosts, fetchFavoritePosts, getFavoritePosts } from "./data/provider.js";
 
 
 const mainContainer = document.querySelector(".giffygram");
@@ -88,7 +88,6 @@ mainContainer.addEventListener(
     (event) => {
         if (event.target.id === "selectName") {
             filterByUser(event.target.value)
-            console.log("user Id = " + event.target.value)
             renderApp()
         }
     }
@@ -113,7 +112,6 @@ mainContainer.addEventListener(
                 userId: userId,
                 postId: postId 
             }
-            console.log('Test')
             sendfavoritePosts(newFavorited)
         }
     }
