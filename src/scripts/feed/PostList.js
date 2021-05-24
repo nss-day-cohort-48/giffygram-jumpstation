@@ -15,7 +15,7 @@ export const giffyFeed = () => {
         <div class='post__description'>${post.description}</div>
         <div class="post__tagline">Posted by ${creator.name} on ${post.timestamp}</div>
         <div class="post__actions"></div>
-        <button class="deletePost" id="deletePost">Delete</button>
+        <button class="deletePost" id="deletePost" value='${post.id}'>Delete</button>
         </section>`
         }).join('')}
     `
