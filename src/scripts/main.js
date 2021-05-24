@@ -71,7 +71,6 @@ mainContainer.addEventListener(
                 title: title,
                 URL: url,
                 description: description,
-
                 userId: currentUser,
                 timestamp: new Date().toLocaleDateString()
             }
