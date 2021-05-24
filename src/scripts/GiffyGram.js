@@ -18,6 +18,10 @@ export const GiffyGram = () => {
         <div giffygram__navbar>
         ${navbar()}
         </div>
+
+        <div class="messageForm">
+        ${renderMessageForm()}
+        </div>
         
         <div class ="create__post">
         ${newPostButton()}
@@ -25,16 +29,6 @@ export const GiffyGram = () => {
 
         <div giffygram__feed>` 
     
-<<<<<<< HEAD
-    <div class="message__form">
-    ${renderMessageForm()}
-    </div>
-    
-    <div class ="create__post">
-    ${newPostButton()}
-    </div>
-=======
->>>>>>> main
 
     if(filter.length < 1) {
         html += `${giffyFeed()}`

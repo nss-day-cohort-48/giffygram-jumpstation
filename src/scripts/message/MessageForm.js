@@ -2,16 +2,25 @@ import {
     fetchUsers,
     getUsers,
     postMessage,
-    showMessageForm,
 } from "../data/provider.js";
 
-const toggleMessageForm = false;
+const mainContainer = document.querySelector(".giffygram");
+
+let toggleMessageForm = false;
 
     document.addEventListener("click",
     (evt) => {
         if(evt.target.id === "message-form-button") {
-            showMessageForm()
-            document.dispatchEvent(new CustomEvent("stateChanged"))
+            toggleMessageForm = true
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+      })
+
+      document.addEventListener("click",
+      (evt) => {
+        if(evt.target.id === "directMessage__cancel") {
+          toggleMessageForm = false
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         }
       })
   
@@ -36,15 +45,14 @@ const toggleMessageForm = false;
     } else if (evt.target.id === "directMessage__close") {
       toggleMessageForm = false
       document.dispatchEvent(new CustomEvent("stateChanged"));
-    } else if (evt.target.id === "directMessage__cancel") {
-      applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
-    }
+    } 
   });
   
-  export const renderMessageForm = () => {
-    const users = fetchUsers()
-  
-    if (showMessageForm === true) {
+    export const renderMessageForm = () => {
+
+    const users = getUsers()
+
+    if (toggleMessageForm === true) {
       return /*html*/`
       <div class="messageForm">
       <h3>Direct Message</h3>
@@ -55,7 +63,7 @@ const toggleMessageForm = false;
           ${users
             .map((user) => {
               return `
-              <option class="user" value="${user.id}">${user.id}</option>
+              <option class="user" value="${user.id}">${user.name}</option>
               `;
             })
             .join("")}
@@ -67,10 +75,9 @@ const toggleMessageForm = false;
           </div>
           <button id="save">Save</button>
           <button id="directMessage__cancel">Cancel</button>
-          <button id="directMessage__close">x</button>
           </div>
       `;
     } else {
       return "";
     }
-  };
+  }

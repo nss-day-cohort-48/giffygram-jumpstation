@@ -10,11 +10,7 @@ const applicationState = {
   },
   allUsers: [],
   allPosts: [],
-<<<<<<< HEAD
-  allMessages: []
-=======
   filteredPosts: []
->>>>>>> main
 };
 
 export const getUsers = () => {
@@ -91,23 +87,19 @@ export const sendPost = (post) => {
       })
 }
 
-export const showMessageForm = () => {
-  applicationState.feed.displayMessages = true
-}
-
 export const fetchMessages = () => {
   return fetch(`${API}/messages`)
   .then((response) => response.json())
   .then((message) => applicationState.allMessages = message)
 }
 
-export const postMessage = () => {
+export const postMessage = (message) => {
   const fetchOptions = {
     method: "POST",
     headers: {
       "Content-type": "application/json"
     },
-    body: JSON.stringify(post)
+    body: JSON.stringify(message)
   }
   return fetch(`${API}/messages`, fetchOptions)
   .then((response) => response.json())
