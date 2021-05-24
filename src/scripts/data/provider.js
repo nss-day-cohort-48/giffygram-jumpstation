@@ -70,3 +70,12 @@ export const sendPost = (post) => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
       })
 }
+
+
+export const deletePost = (id) => {
+  return fetch(`${API}/posts/${id}`, {
+    method: "DELETE",
+  }).then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  });
+};

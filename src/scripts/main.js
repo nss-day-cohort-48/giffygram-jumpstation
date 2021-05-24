@@ -2,7 +2,7 @@
 import { GiffyGram } from "./GiffyGram.js"
 import {LoginForm} from "./auth/Login.js"
 import { CreatePost } from "./feed/CreatePost.js"
-import { fetchPosts, fetchUsers, sendPost, getUsers } from "./data/provider.js";
+import { fetchPosts, fetchUsers, sendPost, getUsers, deletePost  } from "./data/provider.js";
 
 
 const mainContainer = document.querySelector(".giffygram");
@@ -75,6 +75,15 @@ mainContainer.addEventListener(
         }
         else if (clickEvent.target.id === "cancel__button") {
             renderApp()
+        }
+    }
+)
+
+mainContainer.addEventListener(
+    "click", clickEvent => {
+        if (clickEvent.target.id === "deletePost") {
+            deletePost(parseInt(document.querySelector("section[name='post']").value))
+            console.log(parseInt(document.querySelector("section[name='post']").value))
         }
     }
 )
