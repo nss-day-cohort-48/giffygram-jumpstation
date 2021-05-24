@@ -6,7 +6,6 @@ export const giffyFeed = () => {
     const postsReversed = posts.reverse()
 
     return `
-    <h1>Giffy Feed</h1>
     ${postsReversed.map(post => 
         {
         let creator = users.find(user => user.id === post.userId)
