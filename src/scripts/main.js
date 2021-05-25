@@ -50,7 +50,6 @@ renderApp();
 
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "create__button") {
-    const createPost = document.querySelector(".create__post");
     const createPost = document.querySelector(".giffygram__feed");
     createPost.innerHTML = `${CreatePost()}`;
   }
@@ -65,7 +64,6 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const title = document.querySelector("input[name='title']").value;
     const url = document.querySelector("input[name='url']").value;
     const description = document.querySelector(
-      "input[name='description']"
       "textarea[name='postDescription']"
     ).value;
 
@@ -99,7 +97,6 @@ mainContainer.addEventListener("click", (clickEvent) => {
   }
 });
 
-
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.name === "favorite") {
     let postId = parseInt(clickEvent.target.id);
@@ -111,12 +108,10 @@ mainContainer.addEventListener("click", (clickEvent) => {
     sendfavoritePosts(newFavorited);
   }
 });
-mainContainer.addEventListener(
-    "click", clickEvent => {
-        if (clickEvent.target.name === "block") {
-            let id = parseInt(clickEvent.target.id)
-            console.log('Test')
-            deletePost(id)
-        }
-    }
-)
+mainContainer.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.name === "block") {
+    let id = parseInt(clickEvent.target.id);
+    console.log("Test");
+    deletePost(id);
+  }
+});
