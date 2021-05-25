@@ -11,7 +11,7 @@ const applicationState = {
   allUsers: [],
   allPosts: [],
   filteredPosts: [],
-  allMessages: []
+  allMessages: [],
   userFavorites: [],
 };
 
