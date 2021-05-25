@@ -60,7 +60,7 @@ export const sendUsers = (userServiceRequest) => {
 
 export const getPosts = () => {
   // iterate the post
- const modifiedPosts = applicationState.posts.map((post) => {
+  const modifiedPosts = applicationState.posts.map((post) => {
     // determine if current post is Favorited
     const fave = userFavorites.find((favoritePost) => {
       return post.id === favoritePost.postId;
@@ -71,8 +71,8 @@ export const getPosts = () => {
     } else {
       // if it is not add a property of favorited and set it to false
       post.favorited = false;
-    } 
-    return post 
+    }
+    return post;
   });
   //then return the array of modified posts
   return modifiedPosts;
