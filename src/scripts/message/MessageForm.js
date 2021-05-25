@@ -10,7 +10,7 @@ let toggleMessageForm = false;
 
     document.addEventListener("click",
     (evt) => {
-        if(evt.target.id === "message-form-button") {
+        if(evt.target.id === "directMessageIcon") {
             toggleMessageForm = true
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         }

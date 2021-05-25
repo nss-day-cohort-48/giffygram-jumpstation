@@ -12,22 +12,14 @@ export const GiffyGram = () => {
 
     // Show main main UI
     let html = `
-        <h1>Giffygram</h1>
-        <button id="logOut">Logout</button>
-        
-        <div giffygram__navbar>
         ${navbar()}
-        </div>
 
         <div class="messageForm">
         ${renderMessageForm()}
         </div>
         
-        <div class ="create__post">
         ${newPostButton()}
-        </div>
-
-        <div giffygram__feed>` 
+        ` 
     
 
     if(filter.length < 1) {
