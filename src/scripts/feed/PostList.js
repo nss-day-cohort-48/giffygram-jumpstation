@@ -15,7 +15,7 @@ export const giffyFeed = () => {
         <div class="post__tagline">Posted by ${creator.name} on ${post.timestamp}</div>
         <div class="post__actions">
         <div>
-            <img id="${post.id}" class="actionIcon" name="notFavorite" src="${post.favorited ? "/images/yellow.svg" : "/images/blank.svg"}">
+            <img id="${post.id}" class="actionIcon" name="favorite" src="${post.favorited ? "/images/yellow.svg" : "/images/blank.svg"}">
                 </div>
                 
                 // add ternary operator to check if post is favorited //
@@ -29,11 +29,3 @@ export const giffyFeed = () => {
         `
     }
 
-    // document.addEventListener("click", (clickEvent) => {
-    //     const currentFavorites = fetchFavoritePosts()
-    //     if(clickEvent.target.id.startsWith === "yellowFavorite"{
-
-    //     }
-
-    //     }
-    // })
