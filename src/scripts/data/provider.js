@@ -62,7 +62,7 @@ export const getPosts = () => {
   // iterate the post
   const modifiedPosts = applicationState.posts.map((post) => {
     // determine if current post is Favorited
-    const fave = userFavorites.find((favoritePost) => {
+    const fave = applicationState.userFavorites.find((favoritePost) => {
       return post.id === favoritePost.postId;
     });
     // if it is add a property of favorited and set it to true
