@@ -27,12 +27,14 @@ document.addEventListener("click", (clickEvent) => {
     const userName = document.querySelector("input[name='name']").value;
     const userEmail = document.querySelector("input[name='email']").value;
     const userPassword = document.querySelector("input[name='password']").value;
+    const userFavorites = [];
     const userState = getUsers();
 
     const dataToSendToAPI = {
       name: userName,
       email: userEmail,
       password: userPassword,
+      favorites: userFavorites
     };
 
     let matchedUser = userState.find((user) => user.email === userEmail);

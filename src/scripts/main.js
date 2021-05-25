@@ -8,8 +8,10 @@ import {
   filterByUser,
   getFiltered,
   deletePost,
+  sendfavoritePosts,
+  fetchFavoritePosts,
+  getFavoritePosts,
 } from "./data/provider.js";
-
 
 const mainContainer = document.querySelector(".giffygram");
 
@@ -17,9 +19,14 @@ export const renderApp = () => {
   const user = parseInt(localStorage.getItem("gg_user"));
 
   fetchUsers().then(() => {
-    fetchPosts()
+    console.log("we have users");
+    return fetchPosts()
       .then(() => {
-        getFiltered();
+        console.log("we have posts");
+        return fetchFavoritePosts().then(() => {
+          getFiltered();
+          console.log("we have favorite posts");
+        });
       })
       .then(() => {
         if (user) {
@@ -43,6 +50,7 @@ renderApp();
 
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "create__button") {
+    const createPost = document.querySelector(".create__post");
     const createPost = document.querySelector(".giffygram__feed");
     createPost.innerHTML = `${CreatePost()}`;
   }
@@ -57,6 +65,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const title = document.querySelector("input[name='title']").value;
     const url = document.querySelector("input[name='url']").value;
     const description = document.querySelector(
+      "input[name='description']"
       "textarea[name='postDescription']"
     ).value;
 
@@ -75,19 +84,33 @@ mainContainer.addEventListener("click", (clickEvent) => {
     renderApp();
   }
 });
+mainContainer.addEventListener("change", (event) => {
+  if (event.target.id === "selectName") {
+    filterByUser(event.target.value);
+    renderApp();
+  }
+});
+
+mainContainer.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.name === "block") {
+    let id = parseInt(clickEvent.target.id);
+    console.log("Test");
+    deletePost(id);
+  }
+});
 
 
-mainContainer.addEventListener(
-    "change",
-    (event) => {
-        if (event.target.id === "selectName") {
-            filterByUser(event.target.value)
-            console.log("user Id = " + event.target.value)
-            renderApp()
-        }
-    }
-)
-
+mainContainer.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.name === "favorite") {
+    let postId = parseInt(clickEvent.target.id);
+    let userId = parseInt(localStorage.getItem("gg_user"));
+    let newFavorited = {
+      userId: userId,
+      postId: postId,
+    };
+    sendfavoritePosts(newFavorited);
+  }
+});
 mainContainer.addEventListener(
     "click", clickEvent => {
         if (clickEvent.target.name === "block") {
