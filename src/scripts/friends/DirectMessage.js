@@ -1,6 +1,8 @@
 import { getMessages } from "../data/provider.js";
 import { GiffyGram } from "../GiffyGram.js";
 
+const mainContainer = document.querySelector(".giffygram")
+
 const messages = getMessages();
 
 document.addEventListener("click", (evt) => {
@@ -30,5 +32,45 @@ export const renderMessages = () => {
         <button id="logOut" class="fakeLink">Logout</button>
     </div>
 </nav>
-    </div>`;
+
+<div>
+    ${messageList()}
+</div>`;
+};
+
+let userMessages = [];
+
+const checkMessageId = () => {
+  const messages = getMessages();
+
+  for (const message of messages) {
+    if (
+      message.recipientId === parseInt(localStorage.getItem("gg_user")) &&
+      message.read === false
+    ) {
+      userMessages.push(message);
+    }
+  }
+};
+
+export const numberOfMessages = () => {
+  checkMessageId();
+  return userMessages.length;
+};
+
+const messageList = () => {
+  checkMessageId();
+
+  let html = /*html*/ `
+    ${userMessages
+      .map((message) => {
+        return `<section name="message>${message.text}</section>`;
+      })
+      .join(``)}`;
+
+  userMessages = [];
+
+  mainContainer.dispatchEvent(new CustomEvent("messageRead"))
+
+  return html;
 };
