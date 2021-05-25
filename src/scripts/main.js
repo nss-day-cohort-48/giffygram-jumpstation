@@ -51,6 +51,7 @@ renderApp();
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "create__button") {
     const createPost = document.querySelector(".create__post");
+    const createPost = document.querySelector(".giffygram__feed");
     createPost.innerHTML = `${CreatePost()}`;
   }
 });
@@ -65,6 +66,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
     const url = document.querySelector("input[name='url']").value;
     const description = document.querySelector(
       "input[name='description']"
+      "textarea[name='postDescription']"
     ).value;
 
     const currentUser = parseInt(localStorage.getItem("gg_user"));
@@ -82,7 +84,6 @@ mainContainer.addEventListener("click", (clickEvent) => {
     renderApp();
   }
 });
-
 mainContainer.addEventListener("change", (event) => {
   if (event.target.id === "selectName") {
     filterByUser(event.target.value);
@@ -98,6 +99,7 @@ mainContainer.addEventListener("click", (clickEvent) => {
   }
 });
 
+
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.name === "favorite") {
     let postId = parseInt(clickEvent.target.id);
@@ -109,3 +111,12 @@ mainContainer.addEventListener("click", (clickEvent) => {
     sendfavoritePosts(newFavorited);
   }
 });
+mainContainer.addEventListener(
+    "click", clickEvent => {
+        if (clickEvent.target.name === "block") {
+            let id = parseInt(clickEvent.target.id)
+            console.log('Test')
+            deletePost(id)
+        }
+    }
+)

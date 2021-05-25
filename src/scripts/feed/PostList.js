@@ -6,13 +6,12 @@ import {
 } from "../data/provider.js";
 
 export const giffyFeed = () => {
-  const posts = getPosts();
-  const users = getUsers();
-  const postsReversed = posts.reverse();
-  return `
-    <h1>Giffy Feed</h1>
-    ${postsReversed
-      .map((post) => {
+    const posts = getPosts()
+    const users = getUsers()
+    const postsReversed = posts.reverse()
+
+    return `
+    ${postsReversed.map(post => 
         {
           let creator = users.find((user) => user.id === post.userId);
           return `<section name="post" class="post" value='${

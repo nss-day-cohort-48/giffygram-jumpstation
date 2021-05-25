@@ -4,6 +4,7 @@ import { FilteredPosts } from "./feed/FilteredPost.js"
 import { giffyFeed } from "./feed/PostList.js"
 import { footer } from "./nav/Footer.js"
 import { navbar } from "./nav/NavBar.js"
+import { renderMessageForm } from "./message/MessageForm.js"
 
 export const GiffyGram = () => {
     let filter = getFiltered()
@@ -11,18 +12,14 @@ export const GiffyGram = () => {
 
     // Show main main UI
     let html = `
-        <h1>Giffygram</h1>
-        <button id="logOut">Logout</button>
-        
-        <div giffygram__navbar>
         ${navbar()}
+
+        <div class="messageForm">
+        ${renderMessageForm()}
         </div>
         
-        <div class ="create__post">
         ${newPostButton()}
-        </div>
-
-        <div giffygram__feed>` 
+        ` 
     
 
     if(filter.length < 1) {

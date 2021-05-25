@@ -101,6 +101,26 @@ export const sendPost = (post) => {
       mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+export const fetchMessages = () => {
+  return fetch(`${API}/messages`)
+  .then((response) => response.json())
+  .then((message) => applicationState.allMessages = message)
+}
+
+export const postMessage = (message) => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(message)
+  }
+  return fetch(`${API}/messages`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  })
+}
 
 export const deletePost = (id) => {
   return fetch(`${API}/posts/${id}`, {
