@@ -167,10 +167,12 @@ export const sendfavoritePosts = (newFavorited) => {
     },
 //converting json data into raw data    
     body: JSON.stringify(newFavorited),
-  }).then(() => {
-//alerts main container that there has been a change in state    
-    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
-  });
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      //alerts main container that there has been a change in state    
+      mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
 };
 
 export const fetchFavoritePosts = () => {
@@ -184,4 +186,12 @@ export const fetchFavoritePosts = () => {
   .then((userData) => {
       applicationState.userFavorites = userData;
     });
+};
+
+export const deleteFavoritePost = (id) => {
+  return fetch(`${API}/favoritedPosts/${id}`, {
+    method: "DELETE",
+  }).then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  });
 };

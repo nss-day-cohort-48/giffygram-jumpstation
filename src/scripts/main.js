@@ -10,6 +10,9 @@ import {
   deletePost,
   sendfavoritePosts,
   fetchFavoritePosts,
+  getFavoritePosts,
+  deleteFavoritePost,
+  getPosts,
 } from "./data/provider.js";
 //searches for class of giffygram and saves to mainContainer variable
 const mainContainer = document.querySelector(".giffygram");
@@ -120,12 +123,23 @@ mainContainer.addEventListener("click", (clickEvent) => {
 //and sends that data to database
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.name === "favorite") {
-    let postId = parseInt(clickEvent.target.id);
-    let userId = parseInt(localStorage.getItem("gg_user"));
-    let newFavorited = {
-      userId: userId,
-      postId: postId,
-    };
-    sendfavoritePosts(newFavorited);
+    const favoritePosts = getFavoritePosts();
+    const postId = parseInt(clickEvent.target.id);
+    const foundFavePostObject = favoritePosts.find((object) => {
+      if (postId === object.postId) {
+        return true;
+      }
+    });
+    if (foundFavePostObject) {
+      const id = foundFavePostObject.id;
+      deleteFavoritePost(id);
+    } else {
+      const userId = parseInt(localStorage.getItem("gg_user"));
+      const newFavorited = {
+        userId: userId,
+        postId: postId,
+      };
+      sendfavoritePosts(newFavorited);
+    }
   }
 });
