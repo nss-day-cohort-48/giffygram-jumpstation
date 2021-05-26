@@ -1,7 +1,8 @@
+//function returns html render of make a post button
 export const newPostButton = () => {
     return `<div class="giffygram__feed"><button class="miniMode" id="create__button">Have a gif to post?</button></div>`
 }
-
+//function returns html render of create a post form
 export const CreatePost = () => {
     return `
     <div class="create__post">
