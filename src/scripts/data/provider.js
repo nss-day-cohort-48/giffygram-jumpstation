@@ -103,24 +103,24 @@ export const sendPost = (post) => {
 };
 export const fetchMessages = () => {
   return fetch(`${API}/messages`)
-  .then((response) => response.json())
-  .then((message) => applicationState.allMessages = message)
-}
+    .then((response) => response.json())
+    .then((message) => (applicationState.allMessages = message));
+};
 
 export const postMessage = (message) => {
   const fetchOptions = {
     method: "POST",
     headers: {
-      "Content-type": "application/json"
+      "Content-type": "application/json",
     },
-    body: JSON.stringify(message)
-  }
+    body: JSON.stringify(message),
+  };
   return fetch(`${API}/messages`, fetchOptions)
-  .then((response) => response.json())
-  .then(() => {
-    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
-  })
-}
+    .then((response) => response.json())
+    .then(() => {
+      mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
+};
 
 export const deletePost = (id) => {
   return fetch(`${API}/posts/${id}`, {
@@ -141,9 +141,11 @@ export const sendfavoritePosts = (newFavorited) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newFavorited),
-  }).then(() => {
-    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
-  });
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
 };
 
 export const fetchFavoritePosts = () => {
@@ -153,4 +155,12 @@ export const fetchFavoritePosts = () => {
     .then((userData) => {
       applicationState.userFavorites = userData;
     });
+};
+
+export const deleteFavoritePost = (id) => {
+  return fetch(`${API}/favoritedPosts/${id}`, {
+    method: "DELETE",
+  }).then(() => {
+    mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+  });
 };

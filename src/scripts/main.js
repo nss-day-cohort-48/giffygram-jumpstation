@@ -11,6 +11,8 @@ import {
   sendfavoritePosts,
   fetchFavoritePosts,
   getFavoritePosts,
+  deleteFavoritePost,
+  getPosts,
 } from "./data/provider.js";
 
 const mainContainer = document.querySelector(".giffygram");
@@ -99,19 +101,23 @@ mainContainer.addEventListener("click", (clickEvent) => {
 
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.name === "favorite") {
-    let postId = parseInt(clickEvent.target.id);
-    let userId = parseInt(localStorage.getItem("gg_user"));
-    let newFavorited = {
-      userId: userId,
-      postId: postId,
-    };
-    sendfavoritePosts(newFavorited);
-  }
-});
-mainContainer.addEventListener("click", (clickEvent) => {
-  if (clickEvent.target.name === "block") {
-    let id = parseInt(clickEvent.target.id);
-    console.log("Test");
-    deletePost(id);
+    const favoritePosts = getFavoritePosts();
+    const postId = parseInt(clickEvent.target.id);
+    const foundFavePostObject = favoritePosts.find((object) => {
+      if (postId === object.postId) {
+        return true;
+      }
+    });
+    if (foundFavePostObject) {
+      const id = foundFavePostObject.id;
+      deleteFavoritePost(id);
+    } else {
+      const userId = parseInt(localStorage.getItem("gg_user"));
+      const newFavorited = {
+        userId: userId,
+        postId: postId,
+      };
+      sendfavoritePosts(newFavorited);
+    }
   }
 });
