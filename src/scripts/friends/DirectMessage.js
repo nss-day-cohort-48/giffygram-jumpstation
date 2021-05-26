@@ -2,12 +2,6 @@ import { getMessages } from "../data/provider.js";
 
 const mainContainer = document.querySelector(".giffygram");
 
-
-document.addEventListener("click", (evt) => {
-  if (evt.target.id === "open-messages") {
-  }
-});
-
 export const renderMessages = () => {
   return  /*html*/ `
     <nav class="navigation">
@@ -38,39 +32,34 @@ export const renderMessages = () => {
 
 let userMessages = [];
 
-const checkMessageId = () => {
+export const checkMessageId = () => {
   const messages = getMessages();
-
+  
   for (const message of messages) {
     if (
-      message.recipientId === parseInt(localStorage.getItem("gg_user")) &&
-      message.read === false &&
-      userMessages.length === 0
-    ) {
-        userMessages.push(message) }
-        else {
-      for (const pushedMessage of userMessages) {
-        if (message.id !== pushedMessage.id || userMessages.length === 0) {
-          userMessages.push(message)
-          return;
+      (message.recipientId === parseInt(localStorage.getItem("gg_user")) &&
+      message.read === false && userMessages.length === 0)
+      ) { 
+        userMessages.push(message) } else {
+        for(const pushedMessage of userMessages) {
+          if(message.id != pushedMessage.id || userMessages.length === 0) {
+            userMessages.push(message)
         }
       }
-    }
-  }
-};
-
-export const numberOfMessages = () => {
+      }
+      }
+    };
+    
+    export const numberOfMessages = () => {
   checkMessageId();
   return userMessages.length;
 };
 
 const messageList = () => {
-  checkMessageId();
-
   let html = /*html*/ `
     ${userMessages
       .map((message) => {
-        return `<div name="message>${message.text}</div>`;
+        return `<div class="directMessage" name="message">${message.text}</div>`;
       })
       .join(``)}`;
 
