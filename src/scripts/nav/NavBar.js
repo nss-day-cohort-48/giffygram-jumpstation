@@ -21,3 +21,6 @@ export const navbar = () => {
 </nav>
     </div>`
 }
+
+//html render for nav bar
+//returns html render of nav bar images, text, logo, and logout option

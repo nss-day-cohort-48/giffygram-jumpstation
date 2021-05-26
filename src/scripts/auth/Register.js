@@ -1,6 +1,8 @@
 import { sendUsers, getUsers } from "../data/provider.js";
-const mainContainer = document.querySelector(".container");
 
+
+
+//Register returns html for registration component
 export const Register = () => {
   let html = `
     <div class="field">
@@ -21,38 +23,32 @@ export const Register = () => {
   return html;
 };
 
+//initializes a click event listener
 document.addEventListener("click", (clickEvent) => {
+//checks if object clicked is equal to submitRequest
   if (clickEvent.target.id === "submitRequest") {
-    // Get what the user typed into the form fields
+//capturing user name and storing in userName
     const userName = document.querySelector("input[name='name']").value;
+//capturing user email and storing in userEmail    
     const userEmail = document.querySelector("input[name='email']").value;
+//capturing user password and storing in userPassword    
     const userPassword = document.querySelector("input[name='password']").value;
-    const userFavorites = [];
+//invoking and storing getUsers function in variable userState
     const userState = getUsers();
-
+//variable dataToSendToAPI is storing users name, email, password, and favorite posts
     const dataToSendToAPI = {
       name: userName,
       email: userEmail,
       password: userPassword,
-      favorites: userFavorites
+      favorites: []
     };
-
+//find method is looking for an existing user with same login email. if email exists a window alert appears.
+//if user doesnt exist sendUsers function will create a new user and store in the database.
     let matchedUser = userState.find((user) => user.email === userEmail);
     if (matchedUser) {
       window.alert("This email is already taken");
     } else {
       sendUsers(dataToSendToAPI);
     }
-
-    // for (const user of userState) {
-    //     if (user.email === userEmail) {
-    //         window.alert ("This email already exist")
-    //         document.innerHtml = LoginForm()
-    //     }
-    // }
-
-    // Make an object out of the user input
-
-    // Send the data to the API for permanent storage
   }
 });
