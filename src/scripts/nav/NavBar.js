@@ -3,7 +3,7 @@ import { numberOfMessages } from "../friends/DirectMessage.js";
 export const navbar = () => {
   return /*html*/ `<nav class="navigation">
     <div class="navigation__item navigation__icon">
-        <img src="../pb.png" alt="Giffygram icon" id="logo">
+        <img src="../src/images/pb.png" alt="Giffygram icon" id="logo">
     </div>
     <div class="navigation__item navigation__name">
         Giffygram
@@ -12,7 +12,7 @@ export const navbar = () => {
 
     </div>
     <div class="navigation__item navigation__message">
-        <img id="directMessageIcon" src="../fountain-pen.svg" alt="Direct message">
+        <img id="directMessageIcon" src="../src/images/fountain-pen.svg" alt="Direct message">
         <div class="notification__count" id="notification_count">
             ${numberOfMessages()}
         </div>

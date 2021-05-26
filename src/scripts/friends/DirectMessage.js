@@ -1,7 +1,7 @@
 import { getMessages } from "../data/provider.js";
 import { GiffyGram } from "../GiffyGram.js";
 
-const mainContainer = document.querySelector(".giffygram")
+const mainContainer = document.querySelector(".giffygram");
 
 const messages = getMessages();
 
@@ -11,10 +11,10 @@ document.addEventListener("click", (evt) => {
 });
 
 export const renderMessages = () => {
-  document.querySelector(".giffygram").innerHTML = /*html*/ `
+  return  /*html*/ `
     <nav class="navigation">
     <div class="navigation__item navigation__icon">
-        <img src="../pb.png" alt="Giffygram icon" id="logo">
+        <img src="../src/images/pb.png" alt="Giffygram icon" id="logo">
     </div>
     <div class="navigation__item navigation__name">
         Giffygram
@@ -23,9 +23,9 @@ export const renderMessages = () => {
 
     </div>
     <div class="navigation__item navigation__message">
-        <img id="directMessageIcon" src="../fountain-pen.svg" alt="Direct message">
+        <img id="directMessageIcon" src="../src/images/fountain-pen.svg" alt="Direct message">
         <div class="notification__count">
-            0
+            ${numberOfMessages()}
         </div>
     </div>
     <div class="navigation__item navigation__logout">
@@ -33,9 +33,9 @@ export const renderMessages = () => {
     </div>
 </nav>
 
-<div>
+<section name="post" class="post">
     ${messageList()}
-</div>`;
+</section>`;
 };
 
 let userMessages = [];
@@ -46,9 +46,16 @@ const checkMessageId = () => {
   for (const message of messages) {
     if (
       message.recipientId === parseInt(localStorage.getItem("gg_user")) &&
-      message.read === false
+      message.read === false &&
+      userMessages.length === 0
     ) {
-      userMessages.push(message);
+        userMessages.push(message) }
+        else {
+      for (const pushedMessage of userMessages) {
+        if (message.id !== pushedMessage.id || userMessages.length === 0) {
+          userMessages.push(message);
+        }
+      }
     }
   }
 };
@@ -64,13 +71,13 @@ const messageList = () => {
   let html = /*html*/ `
     ${userMessages
       .map((message) => {
-        return `<section name="message>${message.text}</section>`;
+        return `<div name="message>${message.text}</div>`;
       })
       .join(``)}`;
 
   userMessages = [];
 
-  mainContainer.dispatchEvent(new CustomEvent("messageRead"))
+  mainContainer.dispatchEvent(new CustomEvent("messageRead"));
 
   return html;
 };

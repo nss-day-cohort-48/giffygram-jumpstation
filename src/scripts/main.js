@@ -126,7 +126,7 @@ mainContainer.addEventListener(
 mainContainer.addEventListener("click",
 (evt) => {
   if(evt.target.id === "notification_count") {
-    renderMessages()
+   mainContainer.innerHTML = renderMessages()
   }
 })
 

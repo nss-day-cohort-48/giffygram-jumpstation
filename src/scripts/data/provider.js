@@ -15,6 +15,9 @@ const applicationState = {
   userFavorites: [],
 };
 
+export const getMessages = () => {
+ return [...applicationState.allMessages]
+};
 export const getUsers = () => {
   return [...applicationState.allUsers];
 };
@@ -95,10 +98,7 @@ export const sendPost = (post) => {
     },
     body: JSON.stringify(post),
   };
-
-export const getMessages = () => {
-  return [...applicationState.allMessages]
-}
+  
 
   return fetch(`${API}/posts`, fetchOptions)
     .then((response) => response.json())
