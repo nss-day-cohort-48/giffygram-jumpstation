@@ -144,7 +144,6 @@ export const sendfavoritePosts = (newFavorited) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      debugger;
       mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
