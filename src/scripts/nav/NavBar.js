@@ -21,5 +21,8 @@ export const navbar = () => {
         <button id="logOut" class="fakeLink">Logout</button>
     </div>
 </nav>
-    </div>`;
-};
+    </div>`
+}
+
+//html render for nav bar
+//returns html render of nav bar images, text, logo, and logout option

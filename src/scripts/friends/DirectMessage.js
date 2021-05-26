@@ -1,9 +1,7 @@
 import { getMessages } from "../data/provider.js";
-import { GiffyGram } from "../GiffyGram.js";
 
 const mainContainer = document.querySelector(".giffygram");
 
-const messages = getMessages();
 
 document.addEventListener("click", (evt) => {
   if (evt.target.id === "open-messages") {
@@ -53,7 +51,8 @@ const checkMessageId = () => {
         else {
       for (const pushedMessage of userMessages) {
         if (message.id !== pushedMessage.id || userMessages.length === 0) {
-          userMessages.push(message);
+          userMessages.push(message)
+          return;
         }
       }
     }
