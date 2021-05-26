@@ -8,9 +8,7 @@ import { renderMessageForm } from "./message/MessageForm.js"
 
 export const GiffyGram = () => {
     let filter = getFiltered()
-    
-
-    // Show main main UI
+//invokes navbar function to render navbar, message form, and new post button html
     let html = `
         ${navbar()}
 
@@ -21,7 +19,8 @@ export const GiffyGram = () => {
         ${newPostButton()}
         ` 
     
-
+//if users post count is less than 1 giffy feed will continue to show
+//else the DOM will render to show only the filteredPosts of user selected
     if(filter.length < 1) {
         html += `${giffyFeed()}`
     } else {
@@ -36,3 +35,4 @@ export const GiffyGram = () => {
     `
     return html;
 }
+//renders and returns html for footer

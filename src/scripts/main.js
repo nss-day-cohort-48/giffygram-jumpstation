@@ -10,9 +10,8 @@ import {
   deletePost,
   sendfavoritePosts,
   fetchFavoritePosts,
-  getFavoritePosts,
 } from "./data/provider.js";
-
+//
 const mainContainer = document.querySelector(".giffygram");
 
 export const renderApp = () => {

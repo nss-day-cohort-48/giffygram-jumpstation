@@ -11,7 +11,7 @@ export const giffyFeed = () => {
 //returns the html of giffyFeed while mapping through each post and finding the user id associated to that post
   return `
     ${postsReversed
-//maps through each post
+//iterates through each post
       .map((post) => {
 //the find method finds the user for the current post
         let creator = users.find((user) => user.id === post.userId);
