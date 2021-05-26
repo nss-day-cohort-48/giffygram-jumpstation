@@ -2,7 +2,7 @@ import { getFiltered } from "./data/provider.js"
 import { newPostButton, CreatePost } from "./feed/CreatePost.js"
 import { FilteredPosts } from "./feed/FilteredPost.js"
 import { giffyFeed } from "./feed/PostList.js"
-import { footer } from "./nav/Footer.js"
+import { searchByUser } from "./nav/Footer.js"
 import { navbar } from "./nav/NavBar.js"
 import { renderMessageForm } from "./message/MessageForm.js"
 
@@ -30,7 +30,7 @@ export const GiffyGram = () => {
     html +=  ` </div>
 
     <div class="giffygram__footer">
-    ${footer()}
+    ${searchByUser()}
     </div>
     `
     return html;
