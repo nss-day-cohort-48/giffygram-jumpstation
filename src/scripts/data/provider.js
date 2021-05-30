@@ -1,4 +1,4 @@
-const API = "http://localhost:3000";
+const API = "http://eb_react_app.us-east-1.giffygram.com/api";
 const mainContainer = document.querySelector(".giffygram");
 //initializes empty values for applicationState
 const applicationState = {
