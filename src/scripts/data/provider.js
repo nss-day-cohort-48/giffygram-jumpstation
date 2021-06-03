@@ -11,7 +11,12 @@ const applicationState = {
   allUsers: [],
   allPosts: [],
   filteredPosts: [],
+  allMessages: [],
   userFavorites: [],
+};
+
+export const getMessages = () => {
+ return [...applicationState.allMessages]
 };
 //getUsers function returns a copy of allUsers in applicationState
 export const getUsers = () => {

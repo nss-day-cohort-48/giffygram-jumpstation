@@ -5,6 +5,7 @@ import { giffyFeed } from "./feed/PostList.js"
 import { searchByUser } from "./nav/Footer.js"
 import { navbar } from "./nav/NavBar.js"
 import { renderMessageForm } from "./message/MessageForm.js"
+import { checkMessageId } from "./friends/DirectMessage.js"
 
 export const GiffyGram = () => {
     let filter = getFiltered()
@@ -14,6 +15,7 @@ export const GiffyGram = () => {
 
         <div class="messageForm">
         ${renderMessageForm()}
+        ${checkMessageId()}
         </div>
         
         ${newPostButton()}

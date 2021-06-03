@@ -1,6 +1,7 @@
 import { GiffyGram } from "./GiffyGram.js";
 import { LoginForm } from "./auth/Login.js";
 import { CreatePost } from "./feed/CreatePost.js";
+import { renderMessages} from "./friends/DirectMessage.js"
 import {
   fetchPosts,
   fetchUsers,
@@ -8,18 +9,24 @@ import {
   filterByUser,
   getFiltered,
   deletePost,
+  fetchMessages,
   sendfavoritePosts,
   fetchFavoritePosts,
   getFavoritePosts,
   deleteFavoritePost,
   getPosts,
 } from "./data/provider.js";
+import { renderMessageForm } from "./message/MessageForm.js";
+
 //searches for class of giffygram and saves to mainContainer variable
 const mainContainer = document.querySelector(".giffygram");
 
 export const renderApp = () => {
 //gets current users id
   const user = parseInt(localStorage.getItem("gg_user"));
+
+  fetchMessages()
+
 //rendering all users
   fetchUsers().then(() => {
     console.log("we have users");
@@ -123,6 +130,43 @@ mainContainer.addEventListener("click", (clickEvent) => {
 //and sends that data to database
 mainContainer.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.name === "favorite") {
+    let postId = parseInt(clickEvent.target.id);
+    let userId = parseInt(localStorage.getItem("gg_user"));
+    let newFavorited = {
+      userId: userId,
+      postId: postId,
+    };
+    sendfavoritePosts(newFavorited);
+  }
+});
+mainContainer.addEventListener(
+    "click", clickEvent => {
+        if (clickEvent.target.name === "block") {
+            let id = parseInt(clickEvent.target.id)
+            console.log('Test')
+            deletePost(id)
+        }
+    }
+)
+
+mainContainer.addEventListener("click",
+(evt) => {
+  if(evt.target.id === "notification_count") {
+   mainContainer.innerHTML = renderMessages()
+  }
+})
+
+mainContainer.addEventListener("click",
+(evt) => {
+  if(evt.target.id === "logo") {
+    renderApp()
+  }
+})
+mainContainer.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.name === "block") {
+    let id = parseInt(clickEvent.target.id);
+    console.log("Test");
+    deletePost(id);
     const favoritePosts = getFavoritePosts();
     const postId = parseInt(clickEvent.target.id);
     const foundFavePostObject = favoritePosts.find((object) => {

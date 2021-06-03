@@ -33,7 +33,7 @@ export const giffyFeed = () => {
    
         <div>
             <img id="${post.id}" class="actionIcon" name="favorite" src="${
-          post.favorited ? "/images/yellow.svg" : "/images/blank.svg"
+          post.favorited ? "../src/images/yellow.svg" : "../src/images/blank.svg"
         }">
                 </div>
                 
@@ -41,7 +41,7 @@ export const giffyFeed = () => {
       
         <img id="${
           post.id
-        }" class="actionIcon" name="block" src="/images/block.svg">
+        }" class="actionIcon" name="block" src="../src/images/block.svg">
             </div>
 
         </div>
